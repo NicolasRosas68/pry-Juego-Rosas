@@ -32,15 +32,15 @@ namespace pry_Juego_Rosas
             int imagen = Random.Next(1, 4);
             if (imagen == 1)
             {
-                imgNaveEnemiga.ImageLocation = "C:\\Users\\Nicolas\\source\\repos\\pry-Juego-Rosas2\\bin\\Debug\\angel.png";
+                imgNaveEnemiga.ImageLocation = "https://i.gifer.com/origin/cf/cf75a94995efd5a532afe5b4f08f6007_w200.gif";
             }
             else if (imagen == 2)
             {
-                imgNaveEnemiga.ImageLocation = "C:\\Users\\Nicolas\\source\\repos\\pry-Juego-Rosas2\\bin\\Debug\\carrizo.png";
+                imgNaveEnemiga.ImageLocation = "https://i.gifer.com/f3R.gif";
             }
             else
             {
-                imgNaveEnemiga.ImageLocation = "C:\\Users\\Nicolas\\source\\repos\\pry-Juego-Rosas2\\bin\\Debug\\luca.png";
+                imgNaveEnemiga.ImageLocation = "https://i.gifer.com/origin/dc/dcf6c5064d5dda12912e94af2ac4b8f4_w200.gif";
             }
         }
 

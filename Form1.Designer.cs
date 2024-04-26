@@ -40,8 +40,10 @@
             // 
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(800, 450);
+            pictureBox1.Size = new Size(700, 338);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
@@ -53,30 +55,30 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(23, 31);
+            label1.Location = new Point(20, 23);
             label1.Name = "label1";
-            label1.Size = new Size(44, 20);
+            label1.Size = new Size(35, 15);
             label1.TabIndex = 1;
             label1.Text = "score";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(99, 31);
+            label2.Location = new Point(117, 39);
             label2.Name = "label2";
-            label2.Size = new Size(17, 20);
+            label2.Size = new Size(38, 15);
             label2.TabIndex = 2;
-            label2.Text = "0";
-            label2.Click += label2_Click;
+            label2.Text = "label2";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
             MinimizeBox = false;

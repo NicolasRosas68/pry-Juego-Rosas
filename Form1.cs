@@ -34,7 +34,7 @@ namespace pry_Juego_Rosas
             //fondo
             pictureBox1.ImageLocation = "https://static.vecteezy.com/system/resources/previews/004/640/503/large_2x/black-sky-with-stars-space-background-free-photo.jpg";
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            label2 = contador.ToString();
+           
 
         }
 
@@ -123,6 +123,7 @@ namespace pry_Juego_Rosas
 
                 if (MessageBox.Show("perdiste,queres continuar", "mensaje", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
+                    contador = 0;
                     reiniciojuego();
                     crerarenemigos();
                     timer1.Start();
@@ -137,7 +138,7 @@ namespace pry_Juego_Rosas
         private void colicion()
         {
             List<PictureBox> enemigosCopia = new List<PictureBox>(listaenemigos);
-
+            
             foreach (PictureBox enemigo in enemigosCopia)
             {
                 foreach (Proyectil bala in ObjNavejuegador.Proyectiles)
@@ -148,10 +149,12 @@ namespace pry_Juego_Rosas
                         listaenemigos.Remove(enemigo);
                         bala.Imagen.Dispose();
                         ObjNavejuegador.Proyectiles.Remove(bala);
+                        contador = contador + 10;
                         break;
                     }
                 }
             }
+            label2.Text = contador.ToString();
         }
 
 
@@ -165,7 +168,7 @@ namespace pry_Juego_Rosas
                 {
                     timer1.Stop();
                     MessageBox.Show("¡Perdiste!");
-
+                    contador = 0;
                     // Eliminar las naves enemigas
                     foreach (PictureBox enemigoAEliminar in listaenemigos)
                     {
@@ -186,9 +189,9 @@ namespace pry_Juego_Rosas
                         Objenemigos.imgNaveEnemiga.Location = new Point(x, y);
                         listaenemigos.Add(Objenemigos.imgNaveEnemiga);
                     }
-                    contador = contador + 100;
                     ObjNavejuegador.imgNave.Location = new Point(900, 800);
                     timer1.Start();
+                
                     break;
                 }
             }
