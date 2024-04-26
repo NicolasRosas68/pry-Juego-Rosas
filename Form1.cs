@@ -17,6 +17,8 @@ namespace pry_Juego_Rosas
         List<PictureBox> Proyectilesenemigos = new List<PictureBox>();
         List<PictureBox> listaenemigos = new List<PictureBox>();
         Random random = new Random();
+        int contador = 0;   
+        
         int contadordisparp = 0;
         bool finjuego = false;
         private void Form1_Load(object sender, EventArgs e)
@@ -32,6 +34,7 @@ namespace pry_Juego_Rosas
             //fondo
             pictureBox1.ImageLocation = "https://static.vecteezy.com/system/resources/previews/004/640/503/large_2x/black-sky-with-stars-space-background-free-photo.jpg";
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            label2 = contador.ToString();
 
         }
 
@@ -47,7 +50,7 @@ namespace pry_Juego_Rosas
                 ObjNavejuegador.imgNave.Location = new Point(ObjNavejuegador.imgNave.Location.X - 35, // Mueve la nave 5 píxeles hacia la izquierda
                 ObjNavejuegador.imgNave.Location.Y);
             }
-           
+
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -121,6 +124,7 @@ namespace pry_Juego_Rosas
                 if (MessageBox.Show("perdiste,queres continuar", "mensaje", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     reiniciojuego();
+                    crerarenemigos();
                     timer1.Start();
                 }
                 else
@@ -157,7 +161,7 @@ namespace pry_Juego_Rosas
 
             foreach (PictureBox enemigo in enemigosCopia)
             {
-                if (ObjNavejuegador.imgNave.Bounds.IntersectsWith(enemigo.Bounds))
+                if (ObjNavejuegador.imgNave.Bounds.IntersectsWith(enemigo.Bounds) )
                 {
                     timer1.Stop();
                     MessageBox.Show("¡Perdiste!");
@@ -182,7 +186,7 @@ namespace pry_Juego_Rosas
                         Objenemigos.imgNaveEnemiga.Location = new Point(x, y);
                         listaenemigos.Add(Objenemigos.imgNaveEnemiga);
                     }
-
+                    contador = contador + 100;
                     ObjNavejuegador.imgNave.Location = new Point(900, 800);
                     timer1.Start();
                     break;
@@ -191,20 +195,14 @@ namespace pry_Juego_Rosas
         }
         private void crerarenemigos()
         {
-            for (int i = 0; i < 10; i++)
+            int numEnemigos = 10;
+            int espacioEntreEnemigos = 175; // Espacio fijo entre cada enemigo
+            int xInicial = 100; // Posición inicial en el eje X
+
+            for (int i = 0; i < numEnemigos; i++)
             {
-                int x, y;
-                bool posicionValida = false;
-
-                do
-                {
-                    // Generar una posición aleatoria para el nuevo enemigo
-                    x = random.Next(20, 1750);
-                    y = random.Next(10, 10);
-
-                    // Verificar si la posición del nuevo enemigo no se superpone con ningún otro enemigo
-                    posicionValida = VerificarPosicion(x, y);
-                } while (!posicionValida);
+                int x = xInicial + (i * espacioEntreEnemigos);
+                int y = random.Next(175, 175); // Genera una posición aleatoria en la parte superior del PictureBox
 
                 // Crear el enemigo
                 Objenemigos.CrearEnemigo();
@@ -214,23 +212,7 @@ namespace pry_Juego_Rosas
             }
         }
 
-        private bool VerificarPosicion(int x, int y)
-        {
-            // Verificar la distancia entre la nueva posición y las posiciones de los enemigos existentes
-            foreach (PictureBox enemigoExistente in listaenemigos)
-            {
-                // Calcular la distancia entre los centros de los enemigos
-                double distancia = Math.Sqrt(Math.Pow(x - enemigoExistente.Location.X, 2) + Math.Pow(y - enemigoExistente.Location.Y, 2));
 
-                // Si la distancia es menor que un cierto umbral, las posiciones se superponen
-                if (distancia < 150)
-                {
-                    return false; // Posición no válida
-                }
-            }
-
-            return true; // Posición válida
-        }
         private void disparoaminave()
         {
             List<PictureBox> enemigosCopia = new List<PictureBox>(Objenemigos.Proyectilesenemigos);
@@ -241,7 +223,6 @@ namespace pry_Juego_Rosas
 
                 if (ObjNavejuegador.imgNave.Bounds.IntersectsWith(proyectilEnemigo.Bounds))
                 {
-
 
                     finjuego = true;
                 }
@@ -262,6 +243,11 @@ namespace pry_Juego_Rosas
             listaenemigos.Clear();
             Objenemigos.Proyectilesenemigos.Clear();
             finjuego = false;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

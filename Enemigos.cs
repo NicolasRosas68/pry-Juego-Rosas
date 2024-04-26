@@ -32,15 +32,15 @@ namespace pry_Juego_Rosas
             int imagen = Random.Next(1, 4);
             if (imagen == 1)
             {
-                imgNaveEnemiga.ImageLocation = "\\Users\\Nicolas\\OneDrive\\Escritorio\\angel.png";
+                imgNaveEnemiga.ImageLocation = "C:\\Users\\Nicolas\\source\\repos\\pry-Juego-Rosas2\\bin\\Debug\\angel.png";
             }
             else if (imagen == 2)
             {
-                imgNaveEnemiga.ImageLocation = "C:\\Users\\Nicolas\\OneDrive\\Escritorio\\carrizo.png";
+                imgNaveEnemiga.ImageLocation = "C:\\Users\\Nicolas\\source\\repos\\pry-Juego-Rosas2\\bin\\Debug\\carrizo.png";
             }
             else
             {
-                imgNaveEnemiga.ImageLocation = "C:\\Users\\Nicolas\\OneDrive\\Escritorio\\luca.png";
+                imgNaveEnemiga.ImageLocation = "C:\\Users\\Nicolas\\source\\repos\\pry-Juego-Rosas2\\bin\\Debug\\luca.png";
             }
         }
 
